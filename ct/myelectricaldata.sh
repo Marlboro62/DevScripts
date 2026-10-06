@@ -46,7 +46,7 @@ function update_script() {
 
     msg_info "Updating MyElectricalData Backend"
     cd /opt/myelectricaldata/apps/api
-    $STD uv sync --locked --no-editable --no-install-project
+    $STD uv sync --no-dev --no-install-project
     msg_ok "Updated MyElectricalData Backend"
 
     msg_info "Building MyElectricalData Frontend"

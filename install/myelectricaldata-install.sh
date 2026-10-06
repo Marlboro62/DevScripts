@@ -19,7 +19,7 @@ msg_ok "Installed Dependencies"
 
 PG_VERSION="17" setup_postgresql
 PG_DB_NAME="myelectricaldata_client" PG_DB_USER="myelectricaldata" setup_postgresql_db
-PYTHON_VERSION="3.12" setup_uv
+PYTHON_VERSION="3.11" setup_uv
 NODE_VERSION="22" setup_nodejs
 
 fetch_and_deploy_gh_release "myelectricaldata" "MyElectricalData/myelectricaldata_new" "tarball"
@@ -43,7 +43,7 @@ PYTHONUNBUFFERED=1
 EOF
 chmod 600 /opt/myelectricaldata/.env
 cd /opt/myelectricaldata/apps/api
-$STD uv sync --locked --no-editable --no-install-project
+$STD uv sync --no-dev --no-install-project
 msg_ok "Configured MyElectricalData Backend"
 
 msg_info "Building MyElectricalData Frontend"
