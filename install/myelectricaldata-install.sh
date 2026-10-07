@@ -44,6 +44,8 @@ EOF
 chmod 600 /opt/myelectricaldata/.env
 cd /opt/myelectricaldata/apps/api
 $STD uv sync --no-dev --no-install-project
+# Upstream hardcodes the Docker paths /app/static and /app/pyproject.toml
+ln -sfn /opt/myelectricaldata/apps/api /app
 msg_ok "Configured MyElectricalData Backend"
 
 msg_info "Building MyElectricalData Frontend"
@@ -91,6 +93,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/myelectricaldata/apps/api
 EnvironmentFile=/opt/myelectricaldata/.env
+ExecStartPre=/opt/myelectricaldata/apps/api/.venv/bin/alembic upgrade head
 ExecStart=/opt/myelectricaldata/apps/api/.venv/bin/uvicorn src.main:app --host 127.0.0.1 --port 8000
 Restart=on-failure
 RestartSec=5
