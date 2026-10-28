@@ -19,7 +19,7 @@ msg_ok "Installed Dependencies"
 
 PG_VERSION="16" setup_postgresql
 PG_DB_NAME="myelectricaldata_client" PG_DB_USER="myelectricaldata" setup_postgresql_db
-PYTHON_VERSION="3.12" setup_uv
+PYTHON_VERSION="3.11" setup_uv
 NODE_VERSION="24" setup_nodejs
 
 fetch_and_deploy_gh_release "myelectricaldata" "MyElectricalData/myelectricaldata_new" "tarball"
