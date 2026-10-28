@@ -1,0 +1,63 @@
+{
+  "name": "MyElectricalData",
+  "slug": "myelectricaldata",
+  "categories": [
+    16
+  ],
+  "date_created": "2026-10-28",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 8100,
+  "documentation": "https://github.com/MyElectricalData/myelectricaldata_new/tree/main/docs/local-client",
+  "website": "https://www.v2.myelectricaldata.fr/",
+  "repository": "https://github.com/MyElectricalData/myelectricaldata_new",
+  "platforms": [
+    "pve"
+  ],
+  "logo": "https://cdn.jsdelivr.net/gh/MyElectricalData/myelectricaldata_new@main/apps/web/public/logo.svg",
+  "description": "MyElectricalData is the local client of the MyElectricalData gateway for French Linky smart meters. It keeps the consumption and production history from Enedis in its own database, shows it in a web interface with costs per tariff, Tempo and EcoWatt, and exports it to Home Assistant or VictoriaMetrics.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/myelectricaldata.sh",
+      "config_path": "/opt/myelectricaldata/.env",
+      "resources": {
+        "cpu": 2,
+        "ram": 2048,
+        "hdd": 8,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Requires a free account on www.v2.myelectricaldata.fr with the Enedis consent: its Client ID and Client Secret are asked during the install.",
+      "type": "info"
+    },
+    {
+      "text": "The gateway allows 50 uncached requests per day per account: do not run several instances with the same credentials.",
+      "type": "warning"
+    }
+  ],
+  "app_vars": [
+    {
+      "name": "var_med_client_id",
+      "label": "MyElectricalData Client ID",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "var_med_client_secret",
+      "label": "MyElectricalData Client Secret",
+      "type": "password",
+      "secret": true,
+      "required": true
+    }
+  ]
+}
